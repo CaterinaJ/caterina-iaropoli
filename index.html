@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="marquee.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-    <title>Portfolio Caterina</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    
+    <title>Portfolio - Caterina Iaropoli</title>
 </head>
 <body>
     <div class="container-fluid page">
@@ -38,6 +40,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- about me -->
        
         <div class="over-none">
             <div class="container">
@@ -62,30 +66,164 @@
                     </div>
                 </div>
             </div>
-
         </div>
-        
-    
 
-    <!--
-        <div class="container bio">
-            <div class="row align-items-start">
-                <div class="col-md-9">
-                    <p>
-                        Lavoro nel mondo del web dal 2020 occupandomi di sviluppo frontend e realizzazione di siti WordPress.Nel tempo ho lavorato su progetti molto diversi tra loro: landing page marketing, siti corporate e magazine digitali, occupandomi sia della struttura che dell’implementazione tecnica. Mi piace lavorare su progetti ordinati, chiari e pensati per le persone che li devono usare.
-                    </p>
+        <!-- skills -->
+
+        <div class="container-fluid skills p-0">
+            <div class="container p-0">
+                <div class="row p-0">
+                    <div class="col">
+                        <h2 class="title">skills</h2>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="full-bleed-right">
-                        <span class="enhance dm-sans-black">
-                            UX | UI<br>
-                            <span class="small">ORIENTED</span>
-                        </span>
+            </div>
+            <div class="Marquee-box">
+                <div class="MyMarquee left" id="marquee-left">
+                    <div class="marquee-content">
+                        <div class="card">HTML5</div>
+                        <div class="card">CSS3</div>
+                        <div class="card">WP</div>
+                        <div class="card">FIGMA</div>
+                        <div class="card">GSAP</div>
+                        <div class="card">MAGNEWS</div>
+                        <div class="card">GOOGLE<br>WEB<br>DESIGNER</div>
+                        <div class="card">CANVA</div>
+                    </div>
+                </div>
+                <div class="MyMarquee right" id="marquee-right">
+                    <div class="marquee-content">
+                        <div class="card">DEM HTML</div>
+                        <div class="card">BANNER<br>HTML</div>
+                        <div class="card">SALESFORCE</div>
+                        <div class="card">ELEMENTOR</div>
+                        <div class="card">CONNECTED<br>STORIES</div>
+                        <div class="card">TRELLO</div>
+                        <div class="card">CREATOPY</div>
+                        <div class="card">BOOTSTRAP</div>
                     </div>
                 </div>
             </div>
         </div>
-    -->
+
+        <!-- works -->
+        
+        <div class="over-none">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h2 class="title">works</h2>
+                    </div>
+                </div>
+
+                <!-- #1 -->
+                <div class="work">
+                    <div class="row">
+                        <div class="col">
+                            <div class="worktitle">
+                                <div class="bg-opaco">
+                                    <h3>1. IABTV — Piattaforma video editoriale</h3>
+                                </div>
+                            </div>
+                            <p class="description">Piattaforma video per raccogliere e organizzare i contenuti degli eventi IAB (talk, conferenze, panel), strutturata come una vera e propria web TV.</p>
+                            <div class="preview">
+                                <img src="img/iabtv.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row detail">
+                        <div class="col-sm-6">
+                            <div class="to-left label-detail">
+                                <span class="dm-sans-regular">
+                                    <b>Ruolo</b><br>
+                                    Frontend & WordPress Developer
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="to-right label-detail">
+                                <span class="dm-sans-regular">
+                                    <b>Tecnologie</b><br>
+                                    WordPress, HTML, CSS, JavaScript
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #2 -->
+                <div class="work">
+                    <div class="row">
+                        <div class="col">
+                            <div class="worktitle">
+                                <div class="bg-opaco">
+                                    <h3>2. BCC Mediocrati — Magazine digitale</h3>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="row detail justify-items-center align-items-center">
+                        <div class="col-sm-6">
+                            <div class="preview">
+                                <img src="img/bcc.png" class="full">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="description">Trasformazione del magazine cartaceo della BCC Mediocrati in una piattaforma digitale completa, pensata per ospitare, organizzare e valorizzare i contenuti editoriali online.</p>
+                            <div class="to-right label-detail margin-bottom">
+                                <span class="dm-sans-regular">
+                                    <b>Ruolo</b><br>
+                                    Web Designer / Frontend &<br>WordPress Developer
+                                </span>
+                            </div>
+                            <div class="to-right label-detail">
+                                <span class="dm-sans-regular">
+                                    <b>Tecnologie</b><br>
+                                    WordPress, HTML, CSS, JavaScript
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #3 -->
+                <div class="work">
+                    <div class="row">
+                        <div class="col">
+                            <div class="worktitle">
+                                <div class="bg-opaco">
+                                    <h3>3. Retailor.media — Sito corporate</h3>
+                                </div>
+                            </div>
+                            <p class="description">Sito corporate per Retailor Media, sviluppato from scratch per presentare l’azienda, i servizi e il posizionamento nel settore retail media e advertising data-driven.</p>
+                            <div class="preview">
+                                <img src="img/retailormedia.gif" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row detail margin-negativo">
+                        <div class="col-sm-6">
+                            <div class="to-left label-detail">
+                                <span class="dm-sans-regular">
+                                    <b>Ruolo</b><br>
+                                    Frontend & WordPress Developer
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="to-right label-detail">
+                                <span class="dm-sans-regular">
+                                    <b>Tecnologie</b><br>
+                                    WordPress, HTML, CSS, JavaScript
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
     </div>
 </body>
 </html>
