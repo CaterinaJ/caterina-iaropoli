@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Caterina Iaropoli</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Press+Start+2P&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #0d1414;
+      --card-bg: rgba(20, 32, 32, 0.7);
+      --border-subtle: rgba(0, 200, 165, 0.2);
+      --teal-accent: #00c8a5;
+      --teal-glow: rgba(0, 200, 165, 0.15);
+      --text-main: #f0f7f6;
+      --text-muted: #9ab3af;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(0, 200, 165, 0.12) 0%, transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 16px 16px, 16px 16px;
+      line-height: 1.6;
+      padding-top: 100px;
+      padding-bottom: 50px;
+    }
+
+    /* NAVBAR STICKY */
+    .custom-navbar {
+      background: rgba(13, 20, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link:focus {
+      color: var(--teal-accent);
+    }
+
+    /* LANG SWITCHER */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .lang-switcher a {
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .lang-switcher a.active {
+      color: var(--teal-accent);
+    }
+
+    .lang-switcher a:hover {
+      color: #ffffff;
+    }
+
+    .lang-separator {
+      color: var(--border-subtle);
+    }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3 {
+      font-family: 'Syne', sans-serif;
+    }
+
+    .pixel-tag {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.65rem;
+      color: var(--teal-accent);
+      letter-spacing: 1px;
+    }
+
+    .title-main {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex-grow: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border-subtle), transparent);
+    }
+
+    /* BADGES */
+    .pill-btn {
+      display: inline-block;
+      background: var(--teal-glow);
+      border: 1px solid var(--border-subtle);
+      color: var(--teal-accent);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      margin-right: 6px;
+    }
+
+    /* CARDS GENERALI */
+    .custom-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 35px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* IMMAGINE PROFILO */
+    .profile-img {
+      max-width: 320px;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: none;
+      box-shadow: none;
+      mix-blend-mode: color-dodge;
+    }
+
+    /* SKILLS GRID */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+
+    .skill-card:hover {
+      border-color: var(--teal-accent);
+      background: var(--teal-glow);
+      transform: translateY(-2px);
+    }
+
+    /* MAIN WORKS */
+    .work-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 30px;
+      transition: border-color 0.3s ease;
+    }
+
+    .work-item:hover {
+      border-color: rgba(0, 200, 165, 0.5);
+    }
+
+    .work-item h3 {
+      font-size: 1.4rem;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .work-item .description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .img-container {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .preview-img {
+      max-width: 100%;
+      height: auto;
+      max-height: 380px;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .label-detail {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .label-detail b {
+      color: var(--teal-accent);
+    }
+
+    /* TEXT ONLY WORKS */
+    .text-work-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 22px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease;
+    }
+
+    .text-work-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--teal-accent);
+    }
+
+    .text-work-card h4 {
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin-top: 6px;
+      margin-bottom: 10px;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .text-work-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+
+    /* CONTACTS */
+    .contacts-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 30px;
+    }
+
+    .contacts-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contacts-list li {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 0.95rem;
+    }
+
+    .contacts-list a {
+      color: var(--text-main);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contacts-list a:hover {
+      color: var(--teal-accent);
+    }
+
+    .icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: var(--teal-glow);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal-accent);
+    }
+
+    @media (max-width: 991px) {
+      .title-main {
+        font-size: 2.5rem;
+      }
+      .profile-img {
+        max-width: 250px;
+        margin-top: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR STICKY -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+    <div class="container">
+      <a class="navbar-brand pixel-tag" href="/en/">👾 CATERINA.DEV</a>
+      
+      <div class="d-flex align-items-center gap-3 order-lg-3">
+        <div class="lang-switcher">
+          <a href="/">ITA</a>
+          <span class="lang-separator">|</span>
+          <a href="/en/" class="active">ENG</a>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse justify-content-end order-lg-2" id="navbarNav">
+        <ul class="navbar-nav gap-lg-3 my-2 my-lg-0 text-center">
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contacts">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-4">
+
+    <!-- HERO SECTION -->
+    <section class="custom-card">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7 text-start">
+          <div class="pixel-tag mb-2">👾 PORTFOLIO_V2.6</div>
+          <h1 class="title-main">Caterina<br>Iaropoli</h1>
+          <div class="mb-3">
+            <span class="pill-btn">Frontend Developer</span>
+            <span class="pill-btn">Web Designer</span>
+            <span class="pill-btn">SEO Specialist</span>
+          </div>
+          <p class="mt-3 m-0" style="color: var(--text-muted); font-size: 1.05rem;">
+            I design and develop clear, usable, and search-engine-optimized web interfaces. I build WordPress websites, digital publishing platforms, and landing pages, focusing on responsive design, clean frontend structure, and On-Page SEO optimization.
+          </p>
+        </div>
+        <div class="col-lg-5 text-center text-lg-end">
+          <img src="/img/img-profilo.png" alt="Caterina Iaropoli" class="profile-img" onerror="this.src='https://via.placeholder.com/320x320/142020/00c8a5?text=Caterina+Iaropoli'">
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT ME -->
+    <section id="about" class="mb-5">
+      <h2 class="section-title"><span class="pixel-tag">01.</span> About Me</h2>
+      <div class="row g-4">
+        <div class="col-md-9">
+          <div class="custom-card m-0 h-100 d-flex align-items-center">
+            <p class="m-0" style="color: var(--text-muted); font-size: 0.98rem;">
+              Frontend Developer, Web Designer, and SEO Specialist. I build high-performing websites using WordPress and custom code, combining User Experience (UX/UI) design with robust On-Page and Technical SEO. I manage the entire website lifecycle: from information architecture and responsive development to organic search positioning.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="custom-card m-0 h-100 d-flex flex-column justify-content-center text-center">
+            <span class="pixel-tag mb-2">PRO_FOCUS</span>
+            <span style="font-weight: 700; font-size: 1.1rem; color: #fff;">SEO & UX<br>ORIENTED</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="mb-5">
+      <h2 class="section-title"><span class="pixel-tag">02.</span> Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">On-Page SEO</div>
+        <div class="skill-card">Technical SEO</div>
+        <div class="skill-card">Google Search Console</div>
+        <div class="skill-card">Google Analytics</div>
+        <div class="skill-card">HTML5</div>
+        <div class="skill-card">CSS3</div>
+        <div class="skill-card">WordPress</div>
+        <div class="skill-card">Figma</div>
+        <div class="skill-card">Elementor</div>
+        <div class="skill-card">WPBakery</div>
+        <div class="skill-card">Divi</div>
+        <div class="skill-card">GSAP</div>
+        <div class="skill-card">Bootstrap</div>
+        <div class="skill-card">MagNews</div>
+        <div class="skill-card">HTML Email</div>
+        <div class="skill-card">HTML Banners</div>
+        <div class="skill-card">Salesforce</div>
+        <div class="skill-card">Canva</div>
+      </div>
+    </section>
+
+    <!-- MAIN WORKS -->
+    <section id="projects" class="mb-5">
+      <h2 class="section-title"><span class="pixel-tag">03.</span> Featured Projects</h2>
+
+      <!-- #1: SEO Optimization -->
+      <div class="work-item">
+        <span class="pill-btn">SEO & Performance</span>
+        <h3>On-Page SEO Optimization & Technical Audit</h3>
+        <p class="description">Technical audits, long-tail keyword research, and On-Page SEO optimization for WordPress and custom-coded sites. Implementation of meta-tags, structured data, and performance enhancements to boost organic search rankings.</p>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Role:</b> SEO Specialist & Tech Consultant</div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Skills:</b> Technical SEO, Audit, Search Console, Analytics</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #2: IABTV -->
+      <div class="work-item">
+        <span class="pill-btn">Video Platform</span>
+        <h3>IABTV</h3>
+        <p class="description">A video platform designed to aggregate and organize content from IAB events (talks, conferences, panels), structured like a dedicated web TV channel.</p>
+        <div class="img-container">
+          <img src="/img/iabtv.png" alt="IABTV Preview" class="preview-img" onerror="this.src='https://via.placeholder.com/800x400/142020/00c8a5?text=IABTV+Preview'">
+        </div>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Role:</b> Frontend & WordPress Developer</div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Tech Stack:</b> WordPress, HTML, CSS, JavaScript</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #3: BCC Mediocrati -->
+      <div class="work-item">
+        <span class="pill-btn">Digital Magazine</span>
+        <h3>BCC Mediocrati</h3>
+        <p class="description">Transformation of BCC Mediocrati's print publication into a full digital magazine platform, tailored to host, structure, and enhance online editorial content.</p>
+        <div class="img-container">
+          <img src="/img/bcc.png" alt="BCC Mediocrati Preview" class="preview-img" onerror="this.src='https://via.placeholder.com/800x400/142020/00c8a5?text=BCC+Mediocrati+Preview'">
+        </div>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Role:</b> Web Designer / Frontend & WP Developer</div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Tech Stack:</b> WordPress, HTML, CSS, JavaScript</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #4: Retailor.media -->
+      <div class="work-item">
+        <span class="pill-btn">Corporate Site</span>
+        <h3>Retailor.media</h3>
+        <p class="description">Corporate website built from scratch for Retailor Media to present the company, its services, and market positioning within retail media and data-driven advertising.</p>
+        <div class="img-container">
+          <img src="/img/retailormedia-min.png" alt="Retailor Media Preview" class="preview-img" onerror="this.src='https://via.placeholder.com/800x400/142020/00c8a5?text=Retailor+Media+Preview'">
+        </div>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Role:</b> Frontend & WordPress Developer</div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Tech Stack:</b> WordPress, HTML, CSS, JavaScript</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #5: Molino Vigevano -->
+      <div class="work-item">
+        <span class="pill-btn">Campaign Landing</span>
+        <h3>Molino Vigevano</h3>
+        <p class="description">Custom-built landing page created from scratch for a public awareness campaign against food waste.</p>
+        <div class="img-container">
+          <img src="/img/molinovigevano-min.png" alt="Molino Vigevano Preview" class="preview-img" onerror="this.src='https://via.placeholder.com/800x400/142020/00c8a5?text=Molino+Vigevano+Preview'">
+        </div>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Role:</b> Frontend Developer</div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Tech Stack:</b> HTML, CSS, JavaScript</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #6: My Vintage -->
+      <div class="work-item">
+        <span class="pill-btn">Catalog & Events</span>
+        <h3>My Vintage</h3>
+        <p class="description">Development and redesign for a vintage motorcycle rental business and event space in Milan. Features a browsable catalog integrated with offered services.</p>
+        <div class="img-container">
+          <img src="/img/my-vintage-min.png" alt="My Vintage Preview" class="preview-img" onerror="this.src='https://via.placeholder.com/800x400/142020/00c8a5?text=My+Vintage+Preview'">
+        </div>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Role:</b> WordPress & Frontend Developer</div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Tech Stack:</b> WordPress, HTML, CSS, JavaScript</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADDITIONAL TEXT-ONLY PROJECTS -->
+    <section class="mb-5">
+      <h2 class="section-title"><span class="pixel-tag">04.</span> Additional Projects & Campaigns</h2>
+      <div class="row g-4">
+        
+        <div class="col-md-6 col-lg-4">
+          <div class="text-work-card">
+            <div>
+              <span class="pixel-tag">EMAIL_MARKETING</span>
+              <h4>Custom DEM & Newsletters</h4>
+              <p>Development and responsive HTML coding of Direct Email Marketing templates optimized for major email clients (MagNews, Salesforce).</p>
+            </div>
+            <div class="label-detail"><b>Tech:</b> HTML Email, Inline CSS</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="text-work-card">
+            <div>
+              <span class="pixel-tag">RICH_MEDIA</span>
+              <h4>HTML5 Display Banners</h4>
+              <p>Design and animation of display banners and interactive Rich Media formats for digital advertising campaigns.</p>
+            </div>
+            <div class="label-detail"><b>Tech:</b> Google Web Designer, GSAP, HTML5</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="text-work-card">
+            <div>
+              <span class="pixel-tag">TROUBLESHOOTING</span>
+              <h4>WordPress Custom Fixes</h4>
+              <p>Targeted bug fixes, CSS/JS conflict resolution, and advanced layout customization across Elementor, WPBakery, and Divi.</p>
+            </div>
+            <div class="label-detail"><b>Tech:</b> PHP, WordPress, Custom CSS</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACTS -->
+    <section id="contacts" class="mb-5">
+      <h2 class="section-title"><span class="pixel-tag">05.</span> Get In Touch</h2>
+      <div class="contacts-card">
+        <ul class="contacts-list">
+          <li>
+            <div class="icon-box">✉</div>
+            <a href="mailto:cate.iaropoli@gmail.com">cate.iaropoli@gmail.com</a>
+          </li>
+          <li>
+            <div class="icon-box">📞</div>
+            <a href="tel:+393920871966">+39 392 087 1966</a>
+          </li>
+          <li>
+            <div class="icon-box">🔗</div>
+            <a href="https://www.linkedin.com/in/caterina-iaropoli/" target="_blank" rel="noopener noreferrer">
+              linkedin.com/in/caterina-iaropoli
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
