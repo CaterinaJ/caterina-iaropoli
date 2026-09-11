@@ -8,21 +8,20 @@
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   
-  <!-- Google Fonts: Space Mono (Pixel/Tech vibe) + Syne (Grunge/Modern Display) -->
+  <!-- Google Fonts: Inter per leggibilità pulita + Press Start 2P per micro tocchi pixel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Press+Start+2P&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-color: #0b1313;
-      --card-bg: #121e1e;
-      --teal-accent: #00f0c2;
-      --teal-dark: #005f53;
-      --text-main: #e6f7f5;
-      --text-muted: #8aa7a1;
-      --border-color: #00f0c2;
-      --solid-shadow: 4px 4px 0px #00f0c2;
+      --bg-dark: #0d1414;
+      --card-bg: rgba(20, 32, 32, 0.7);
+      --border-subtle: rgba(0, 200, 165, 0.2);
+      --teal-accent: #00c8a5;
+      --teal-glow: rgba(0, 200, 165, 0.15);
+      --text-main: #f0f7f6;
+      --text-muted: #9ab3af;
     }
 
     * {
@@ -32,196 +31,213 @@
     }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       color: var(--text-main);
-      background-color: var(--bg-color);
-      /* Pattern a griglia stile pixel/retro */
+      background-color: var(--bg-dark);
+      /* Delicata griglia stile pixel sfumata di sfondo */
       background-image: 
-        linear-gradient(rgba(0, 240, 194, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 240, 194, 0.05) 1px, transparent 1px);
-      background-size: 24px 24px;
-      padding: 40px 0;
+        radial-gradient(circle at 50% 0%, rgba(0, 200, 165, 0.12) 0%, transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 32px 32px, 32px 32px;
+      line-height: 1.6;
+      padding: 50px 0;
     }
 
     /* TYPOGRAPHY */
-    h1, h2, h3, .pixel-text {
-      font-family: 'Space Mono', monospace;
+    h1, h2, h3 {
+      font-family: 'Syne', sans-serif;
+    }
+
+    .pixel-tag {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.65rem;
+      color: var(--teal-accent);
+      letter-spacing: 1px;
     }
 
     .title-main {
-      font-family: 'Syne', sans-serif;
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       font-weight: 800;
-      line-height: 1;
-      text-transform: uppercase;
+      line-height: 1.1;
       color: #ffffff;
-      text-shadow: 3px 3px 0px var(--teal-accent);
       margin-bottom: 20px;
     }
 
     .section-title {
       font-size: 1.8rem;
       font-weight: 700;
-      text-transform: uppercase;
-      color: var(--teal-accent);
+      color: #ffffff;
       margin-bottom: 30px;
-      display: inline-block;
-      border-bottom: 2px solid var(--teal-accent);
-      padding-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    /* BADGES & PILLS */
+    .section-title::after {
+      content: '';
+      flex-grow: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border-subtle), transparent);
+    }
+
+    /* BADGES */
     .pill-btn {
       display: inline-block;
-      background: var(--teal-accent);
-      color: #000000;
-      font-family: 'Space Mono', monospace;
-      padding: 4px 12px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      border: 1px solid #000000;
-      box-shadow: 2px 2px 0px #ffffff;
+      background: var(--teal-glow);
+      border: 1px solid var(--border-subtle);
+      color: var(--teal-accent);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
       margin-bottom: 8px;
       margin-right: 6px;
     }
 
-    /* HERO SECTION */
-    .hero-card {
+    /* CARDS GENERALI */
+    .custom-card {
       background: var(--card-bg);
-      border: 2px solid var(--border-color);
-      box-shadow: var(--solid-shadow);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
       padding: 35px;
-      margin-bottom: 50px;
-      position: relative;
-    }
-
-    .hero-card::before {
-      content: "► SYS_PROFILE.EXE";
-      position: absolute;
-      top: -12px;
-      left: 20px;
-      background: var(--teal-accent);
-      color: #000;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem;
-      font-weight: bold;
-      padding: 2px 8px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
     .profile-img {
-      max-width: 180px;
+      max-width: 190px;
       width: 100%;
       height: auto;
-      border: 2px solid var(--teal-accent);
-      box-shadow: 3px 3px 0px #ffffff;
-      filter: grayscale(20%) contrast(110%);
-    }
-
-    .intro-text {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      line-height: 1.6;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
 
     /* SKILLS GRID */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 10px;
+      gap: 12px;
     }
 
     .skill-card {
       background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      padding: 10px;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 12px;
       text-align: center;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 500;
       color: var(--text-main);
       transition: all 0.2s ease;
     }
 
     .skill-card:hover {
-      background: var(--teal-accent);
-      color: #000;
-      font-weight: bold;
-      transform: translate(-2px, -2px);
-      box-shadow: 2px 2px 0px #ffffff;
+      border-color: var(--teal-accent);
+      background: var(--teal-glow);
+      transform: translateY(-2px);
     }
 
-    /* WORKS SECTION - COMPACT GRID */
+    /* MAIN WORKS (CON IMMAGINI INTERE) */
     .work-item {
       background: var(--card-bg);
-      border: 1px solid rgba(0, 240, 194, 0.4);
-      padding: 25px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.2s ease;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 30px;
+      transition: border-color 0.3s ease;
     }
 
     .work-item:hover {
-      border-color: var(--teal-accent);
-      box-shadow: var(--solid-shadow);
-      transform: translateY(-3px);
+      border-color: rgba(0, 200, 165, 0.5);
     }
 
     .work-item h3 {
-      font-size: 1.25rem;
+      font-size: 1.4rem;
       color: #ffffff;
-      margin-top: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .work-item .description {
       color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-      flex-grow: 1;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
     }
 
-    /* IMMAGINI COMPATTE CON CORNICE */
-    .img-wrapper {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-      margin-bottom: 15px;
-      max-height: 180px;
+    /* RENDER IMMAGINE INTERA SENZA TAGLI */
+    .img-container {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
     }
 
     .preview-img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      object-position: top;
-      filter: saturate(85%);
-      transition: filter 0.3s ease;
-    }
-
-    .work-item:hover .preview-img {
-      filter: saturate(100%);
+      max-width: 100%;
+      height: auto;
+      max-height: 380px;
+      object-fit: contain;
+      border-radius: 6px;
     }
 
     .label-detail {
-      background: rgba(0, 0, 0, 0.4);
-      border-left: 2px solid var(--teal-accent);
-      padding: 6px 10px;
-      font-size: 0.8rem;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.85rem;
       color: var(--text-muted);
-      font-family: 'Space Mono', monospace;
     }
 
     .label-detail b {
       color: var(--teal-accent);
     }
 
+    /* TEXT ONLY WORKS (PROGETTI SECONDARI/TESTUALI) */
+    .text-work-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 22px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease;
+    }
+
+    .text-work-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--teal-accent);
+    }
+
+    .text-work-card h4 {
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin-top: 6px;
+      margin-bottom: 10px;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .text-work-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+
     /* CONTACTS */
     .contacts-card {
       background: var(--card-bg);
-      border: 2px solid var(--border-color);
-      box-shadow: var(--solid-shadow);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
       padding: 30px;
     }
 
@@ -231,33 +247,44 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 16px;
     }
 
     .contacts-list li {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.95rem;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 15px;
+      font-size: 0.95rem;
     }
 
     .contacts-list a {
-      color: var(--teal-accent);
+      color: var(--text-main);
       text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     .contacts-list a:hover {
-      text-decoration: underline;
-      color: #ffffff;
+      color: var(--teal-accent);
+    }
+
+    .icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: var(--teal-glow);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal-accent);
     }
 
     @media (max-width: 768px) {
       .title-main {
-        font-size: 2.5rem;
+        font-size: 2.4rem;
       }
-      .hero-card {
-        padding: 20px;
+      .custom-card, .work-item {
+        padding: 22px;
       }
     }
   </style>
@@ -267,40 +294,41 @@
   <div class="container my-4">
 
     <!-- HERO SECTION -->
-    <section class="hero-card">
+    <section class="custom-card">
       <div class="row align-items-center g-4">
         <div class="col-md-8 text-start">
+          <div class="pixel-tag mb-2">👾 PORTFOLIO_V2.6</div>
           <h1 class="title-main">Caterina<br>Iaropoli</h1>
           <div class="mb-3">
-            <span class="pill-btn">Frontend Dev</span>
+            <span class="pill-btn">Frontend Developer</span>
             <span class="pill-btn">Web Designer</span>
             <span class="pill-btn">SEO Specialist</span>
           </div>
-          <p class="intro-text m-0 mt-3">
-            Progetto e sviluppo interfacce web chiare, usabili e ottimizzate per i motori di ricerca. Realizzo siti WordPress, piattaforme editoriali e landing page, curando la struttura frontend ed il posizionamento On-Page.
+          <p class="mt-3 m-0" style="color: var(--text-muted); font-size: 1.05rem;">
+            Progetto e sviluppo interfacce web chiare, usabili e ottimizzate per i motori di ricerca. Realizzo siti WordPress, piattaforme editoriali digitali e landing page, curandone il design responsive, la struttura frontend ed il posizionamento SEO On-Page.
           </p>
         </div>
-        <div class="col-md-4 text-center">
-          <img src="img/profilebw.png" alt="Caterina Iaropoli" class="profile-img" onerror="this.src='https://via.placeholder.com/180x180/121e1e/00f0c2?text=CATERINA'">
+        <div class="col-md-4 text-center text-md-end">
+          <img src="img/profilebw.png" alt="Caterina Iaropoli" class="profile-img" onerror="this.src='https://via.placeholder.com/190x190/142020/00c8a5?text=Caterina+Iaropoli'">
         </div>
       </div>
     </section>
 
     <!-- ABOUT ME -->
     <section class="mb-5">
-      <h2 class="section-title">// ABOUT_ME</h2>
+      <h2 class="section-title"><span class="pixel-tag">01.</span> About Me</h2>
       <div class="row g-4">
-        <div class="col-md-8">
-          <div class="work-item" style="height: auto;">
-            <p class="m-0" style="color: var(--text-muted); font-size: 0.95rem;">
-              Sviluppatrice Frontend, Web Designer e SEO Specialist con anni di esperienza nel settore. Realizzo siti web performanti su WordPress e codice custom, unendo la cura per la User Experience (UX/UI) a solide ottimizzazioni SEO On-Page e tecniche. Mi occupo dell'intero ciclo di vita del sito: dall'architettura delle informazioni allo sviluppo responsive, fino al posizionamento organico.
+        <div class="col-md-9">
+          <div class="custom-card m-0 h-100 d-flex align-items-center">
+            <p class="m-0" style="color: var(--text-muted); font-size: 0.98rem;">
+              Sviluppatrice Frontend, Web Designer e SEO Specialist. Realizzo siti web performanti su WordPress e codice custom, unendo la cura per la User Experience (UX/UI) a solide ottimizzazioni SEO On-Page e tecniche. Mi occupo dell'intero ciclo di vita del sito: dall'architettura delle informazioni allo sviluppo responsive, fino al posizionamento organico sui motori di ricerca.
             </p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="work-item text-center justify-content-center" style="height: auto; background: rgba(0, 240, 194, 0.05);">
-            <span class="pixel-text" style="font-size: 1.2rem; color: var(--teal-accent); font-weight: bold;">[SEO & UX]</span>
-            <span class="pixel-text" style="font-size: 0.8rem; color: var(--text-muted);">ORIENTED_DEVELOPMENT</span>
+        <div class="col-md-3">
+          <div class="custom-card m-0 h-100 d-flex flex-column justify-content-center text-center">
+            <span class="pixel-tag mb-2">PRO_FOCUS</span>
+            <span style="font-weight: 700; font-size: 1.1rem; color: #fff;">SEO & UX<br>ORIENTED</span>
           </div>
         </div>
       </div>
@@ -308,135 +336,172 @@
 
     <!-- SKILLS -->
     <section class="mb-5">
-      <h2 class="section-title">// TECH_SKILLS</h2>
+      <h2 class="section-title"><span class="pixel-tag">02.</span> Technical Skills</h2>
       <div class="skills-grid">
-        <div class="skill-card">SEO ON-PAGE</div>
-        <div class="skill-card">TECHNICAL SEO</div>
+        <div class="skill-card">SEO On-Page</div>
+        <div class="skill-card">Technical SEO</div>
         <div class="skill-card">HTML5</div>
         <div class="skill-card">CSS3</div>
-        <div class="skill-card">WORDPRESS</div>
-        <div class="skill-card">FIGMA</div>
-        <div class="skill-card">ELEMENTOR</div>
-        <div class="skill-card">WPAKER / DIVI</div>
+        <div class="skill-card">WordPress</div>
+        <div class="skill-card">Figma</div>
+        <div class="skill-card">Elementor</div>
+        <div class="skill-card">WPAker / Divi</div>
         <div class="skill-card">GSAP</div>
-        <div class="skill-card">BOOTSTRAP</div>
-        <div class="skill-card">MAGNEWS</div>
+        <div class="skill-card">Bootstrap</div>
+        <div class="skill-card">MagNews</div>
         <div class="skill-card">DEM HTML</div>
-        <div class="skill-card">BANNER HTML</div>
-        <div class="skill-card">SALESFORCE</div>
-        <div class="skill-card">CANVA</div>
-        <div class="skill-card">TRELLO</div>
+        <div class="skill-card">Banner HTML</div>
+        <div class="skill-card">Salesforce</div>
+        <div class="skill-card">Canva</div>
+        <div class="skill-card">Trello</div>
       </div>
     </section>
 
-    <!-- WORKS GRID (2 COLONNE PER UN LAYOUT PIÙ ORDINATO) -->
+    <!-- MAIN WORKS (CON IMMAGINI COMPLETE) -->
     <section class="mb-5">
-      <h2 class="section-title">// FEATURED_WORKS</h2>
+      <h2 class="section-title"><span class="pixel-tag">03.</span> Featured Projects</h2>
 
+      <!-- #1: SEO Optimization -->
+      <div class="work-item">
+        <span class="pill-btn">SEO & Performance</span>
+        <h3>Ottimizzazione SEO On-Page & Technical Audit</h3>
+        <p class="description">Audit tecnico, ricerca keyword (long-tail) e ottimizzazione SEO On-Page su piattaforme WordPress e siti custom. Intervento su meta-tag, dati strutturati e velocità di caricamento per il miglioramento del posizionamento organico.</p>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Ruolo:</b> SEO Specialist & Tech Consultant</div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Competenze:</b> Technical SEO, Audit, Keyword Analysis</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #2: IABTV -->
+      <div class="work-item">
+        <span class="pill-btn">Piattaforma Video</span>
+        <h3>IABTV</h3>
+        <p class="description">Piattaforma video per raccogliere e organizzare i contenuti degli eventi IAB (talk, conferenze, panel), strutturata come una vera e propria web TV.</p>
+        <div class="img-container">
+          <img src="img/iabtv.png" alt="IABTV Preview" class="preview-img" onerror="this.src='https://via.placeholder.com/800x400/142020/00c8a5?text=IABTV+Preview'">
+        </div>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Ruolo:</b> Frontend & WordPress Developer</div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Tecnologie:</b> WordPress, HTML, CSS, JavaScript</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #3: BCC Mediocrati -->
+      <div class="work-item">
+        <span class="pill-btn">Magazine Digitale</span>
+        <h3>BCC Mediocrati</h3>
+        <p class="description">Trasformazione del magazine cartaceo della BCC Mediocrati in una piattaforma digitale completa, pensata per ospitare, organizzare e valorizzare i contenuti editoriali online.</p>
+        <div class="img-container">
+          <img src="img/bcc.png" alt="BCC Mediocrati Preview" class="preview-img" onerror="this.src='https://via.placeholder.com/800x400/142020/00c8a5?text=BCC+Mediocrati+Preview'">
+        </div>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Ruolo:</b> Web Designer / Frontend & WP Developer</div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Tecnologie:</b> WordPress, HTML, CSS, JavaScript</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #4: Retailor.media -->
+      <div class="work-item">
+        <span class="pill-btn">Sito Corporate</span>
+        <h3>Retailor.media</h3>
+        <p class="description">Sito corporate per Retailor Media, sviluppato from scratch per presentare l’azienda, i servizi e il posizionamento nel settore retail media e advertising data-driven.</p>
+        <div class="img-container">
+          <img src="img/retailormedia-min.png" alt="Retailor Media Preview" class="preview-img" onerror="this.src='https://via.placeholder.com/800x400/142020/00c8a5?text=Retailor+Media+Preview'">
+        </div>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Ruolo:</b> Frontend & WordPress Developer</div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Tecnologie:</b> WordPress, HTML, CSS, JavaScript</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #5: Molino Vigevano -->
+      <div class="work-item">
+        <span class="pill-btn">Campaign Landing</span>
+        <h3>Molino Vigevano</h3>
+        <p class="description">Landing page sviluppata from scratch per una campagna di sensibilizzazione contro lo spreco alimentare.</p>
+        <div class="img-container">
+          <img src="img/molinovigevano-min.png" alt="Molino Vigevano Preview" class="preview-img" onerror="this.src='https://via.placeholder.com/800x400/142020/00c8a5?text=Molino+Vigevano+Preview'">
+        </div>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Ruolo:</b> Frontend Developer</div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Tecnologie:</b> HTML, CSS, JavaScript</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #6: My Vintage -->
+      <div class="work-item">
+        <span class="pill-btn">Catalogo & Eventi</span>
+        <h3>My Vintage</h3>
+        <p class="description">Sviluppo e restyling per il noleggio di moto d’epoca e promozione di uno spazio eventi a Milano. Catalogo consultabile abbinato ai servizi offerti.</p>
+        <div class="img-container">
+          <img src="img/my-vintage-min.png" alt="My Vintage Preview" class="preview-img" onerror="this.src='https://via.placeholder.com/800x400/142020/00c8a5?text=My+Vintage+Preview'">
+        </div>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Ruolo:</b> WordPress & Frontend Developer</div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail"><b>Tecnologie:</b> WordPress, HTML, CSS, JavaScript</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADDITIONAL TEXT-ONLY PROJECTS (PROGETTI TESTUALI REINTEGRATI) -->
+    <section class="mb-5">
+      <h2 class="section-title"><span class="pixel-tag">04.</span> Additional Projects & Campaigns</h2>
       <div class="row g-4">
-
-        <!-- #1: SEO Optimization -->
-        <div class="col-md-6">
-          <div class="work-item">
+        
+        <div class="col-md-6 col-lg-4">
+          <div class="text-work-card">
             <div>
-              <span class="pill-btn">SEO & Audit</span>
-              <h3>Ottimizzazione SEO & Audit</h3>
-              <p class="description">Audit tecnico, ricerca keyword (long-tail) e ottimizzazione On-Page per siti WordPress e custom. Intervento su meta-tag, dati strutturati e velocità di caricamento.</p>
+              <span class="pixel-tag">EMAIL_MARKETING</span>
+              <h4>DEM & Newsletter Custom</h4>
+              <p>Sviluppo e codifica HTML responsive di Direct Email Marketing e template newsletter ottimizzati per i principali client di posta (MagNews, Salesforce).</p>
             </div>
-            <div class="label-detail">
-              <b>ROLE:</b> SEO Specialist & Tech Consultant<br>
-              <b>TOOLS:</b> Technical SEO, Audit, Analytics
-            </div>
+            <div class="label-detail"><b>Tech:</b> HTML Email, Inline CSS</div>
           </div>
         </div>
 
-        <!-- #2: IABTV -->
-        <div class="col-md-6">
-          <div class="work-item">
+        <div class="col-md-6 col-lg-4">
+          <div class="text-work-card">
             <div>
-              <span class="pill-btn">Video Platform</span>
-              <h3>IABTV</h3>
-              <div class="img-wrapper">
-                <img src="img/iabtv.png" alt="IABTV" class="preview-img" onerror="this.src='https://via.placeholder.com/500x200/121e1e/00f0c2?text=IABTV'">
-              </div>
-              <p class="description">Piattaforma video editoriale per organizzare i contenuti degli eventi IAB (talk, conferenze, panel) in formato Web TV.</p>
+              <span class="pixel-tag">RICH_MEDIA</span>
+              <h4>Banner HTML5 Display</h4>
+              <p>Progettazione e animazione di banner display e formati Rich Media interattivi per campagne pubblicitarie digitali.</p>
             </div>
-            <div class="label-detail">
-              <b>ROLE:</b> Frontend & WP Developer<br>
-              <b>STACK:</b> WordPress, JS, CSS3
-            </div>
+            <div class="label-detail"><b>Tech:</b> Google Web Designer, GSAP, HTML5</div>
           </div>
         </div>
 
-        <!-- #3: BCC Mediocrati -->
-        <div class="col-md-6">
-          <div class="work-item">
+        <div class="col-md-6 col-lg-4">
+          <div class="text-work-card">
             <div>
-              <span class="pill-btn">Digital Magazine</span>
-              <h3>BCC Mediocrati</h3>
-              <div class="img-wrapper">
-                <img src="img/bcc.png" alt="BCC Mediocrati" class="preview-img" onerror="this.src='https://via.placeholder.com/500x200/121e1e/00f0c2?text=BCC+Mediocrati'">
-              </div>
-              <p class="description">Trasformazione del magazine cartaceo in piattaforma digitale editoriale per la fruizione dei contenuti online.</p>
+              <span class="pixel-tag">TROUBLESHOOTING</span>
+              <h4>WordPress Custom Fixes</h4>
+              <p>Interventi verticali di bug fixing, risoluzione conflitti CSS/JS e personalizzazioni avanzate di layout su Elementor, WPBakery e Divi.</p>
             </div>
-            <div class="label-detail">
-              <b>ROLE:</b> Web Designer / Frontend Dev<br>
-              <b>STACK:</b> WordPress, HTML5, CSS3
-            </div>
-          </div>
-        </div>
-
-        <!-- #4: Retailor.media -->
-        <div class="col-md-6">
-          <div class="work-item">
-            <div>
-              <span class="pill-btn">Corporate Site</span>
-              <h3>Retailor.media</h3>
-              <div class="img-wrapper">
-                <img src="img/retailormedia-min.png" alt="Retailor Media" class="preview-img" onerror="this.src='https://via.placeholder.com/500x200/121e1e/00f0c2?text=Retailor+Media'">
-              </div>
-              <p class="description">Sito aziendale sviluppato from scratch per presentare i servizi di advertising data-driven nel settore retail media.</p>
-            </div>
-            <div class="label-detail">
-              <b>ROLE:</b> Frontend & WP Developer<br>
-              <b>STACK:</b> WordPress, JS, Custom CSS
-            </div>
-          </div>
-        </div>
-
-        <!-- #5: Molino Vigevano -->
-        <div class="col-md-6">
-          <div class="work-item">
-            <div>
-              <span class="pill-btn">Campaign Landing</span>
-              <h3>Molino Vigevano</h3>
-              <div class="img-wrapper">
-                <img src="img/molinovigevano-min.png" alt="Molino Vigevano" class="preview-img" onerror="this.src='https://via.placeholder.com/500x200/121e1e/00f0c2?text=Molino+Vigevano'">
-              </div>
-              <p class="description">Landing page ad alto impatto per una campagna di sensibilizzazione sulla riduzione dello spreco alimentare.</p>
-            </div>
-            <div class="label-detail">
-              <b>ROLE:</b> Frontend Developer<br>
-              <b>STACK:</b> HTML5, CSS3, JavaScript
-            </div>
-          </div>
-        </div>
-
-        <!-- #6: My Vintage -->
-        <div class="col-md-6">
-          <div class="work-item">
-            <div>
-              <span class="pill-btn">Catalog & Venue</span>
-              <h3>My Vintage</h3>
-              <div class="img-wrapper">
-                <img src="img/my-vintage-min.png" alt="My Vintage" class="preview-img" onerror="this.src='https://via.placeholder.com/500x200/121e1e/00f0c2?text=My+Vintage'">
-              </div>
-              <p class="description">Sviluppo e restyling per noleggio veicoli d'epoca e prenotazione di una location eventi a Milano.</p>
-            </div>
-            <div class="label-detail">
-              <b>ROLE:</b> WP & Frontend Developer<br>
-              <b>STACK:</b> WordPress, UI Restyle, JS
-            </div>
+            <div class="label-detail"><b>Tech:</b> PHP, WordPress, Custom CSS</div>
           </div>
         </div>
 
@@ -445,19 +510,19 @@
 
     <!-- CONTACTS -->
     <section class="mb-5">
-      <h2 class="section-title">// CONTACT_CONNECT</h2>
+      <h2 class="section-title"><span class="pixel-tag">05.</span> Get In Touch</h2>
       <div class="contacts-card">
         <ul class="contacts-list">
           <li>
-            <span>[EMAIL]</span>
+            <div class="icon-box">✉</div>
             <a href="mailto:caterina.iaropoli@gmail.com">caterina.iaropoli@gmail.com</a>
           </li>
           <li>
-            <span>[TEL]</span>
+            <div class="icon-box">📞</div>
             <a href="tel:+393318944520">+39 331 894 4520</a>
           </li>
           <li>
-            <span>[LINKEDIN]</span>
+            <div class="icon-box">🔗</div>
             <a href="https://www.linkedin.com/in/caterina-iaropoli/" target="_blank" rel="noopener noreferrer">
               linkedin.com/in/caterina-iaropoli
             </a>
