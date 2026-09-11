@@ -8,7 +8,7 @@
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   
-  <!-- Google Fonts: Inter per leggibilità pulita + Press Start 2P per micro tocchi pixel -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Press+Start+2P&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -34,7 +34,6 @@
       font-family: 'Inter', sans-serif;
       color: var(--text-main);
       background-color: var(--bg-dark);
-      /* Delicata griglia stile pixel sfumata di sfondo */
       background-image: 
         radial-gradient(circle at 50% 0%, rgba(0, 200, 165, 0.12) 0%, transparent 50%),
         linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
@@ -106,18 +105,20 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
+    /* IMMAGINE PROFILO (PROPORZIONE 40% HERO) */
     .profile-img {
-  max-width: 280px;
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  border: none; /* Bordo rimosso completamente */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-}
+      max-width: 320px;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
     /* SKILLS GRID */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
       gap: 12px;
     }
 
@@ -139,7 +140,7 @@
       transform: translateY(-2px);
     }
 
-    /* MAIN WORKS (CON IMMAGINI INTERE) */
+    /* MAIN WORKS */
     .work-item {
       background: var(--card-bg);
       border: 1px solid var(--border-subtle);
@@ -165,7 +166,6 @@
       margin-bottom: 20px;
     }
 
-    /* RENDER IMMAGINE INTERA SENZA TAGLI */
     .img-container {
       width: 100%;
       background: rgba(0, 0, 0, 0.2);
@@ -199,7 +199,7 @@
       color: var(--teal-accent);
     }
 
-    /* TEXT ONLY WORKS (PROGETTI SECONDARI/TESTUALI) */
+    /* TEXT ONLY WORKS */
     .text-work-card {
       background: var(--card-bg);
       border: 1px solid var(--border-subtle);
@@ -278,12 +278,13 @@
       color: var(--teal-accent);
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 991px) {
       .title-main {
-        font-size: 2.4rem;
+        font-size: 2.5rem;
       }
-      .custom-card, .work-item {
-        padding: 22px;
+      .profile-img {
+        max-width: 250px;
+        margin-top: 15px;
       }
     }
   </style>
@@ -292,10 +293,11 @@
 
   <div class="container my-4">
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (RAPPORTO 60/40 SU DESKTOP) -->
     <section class="custom-card">
       <div class="row align-items-center g-4">
-        <div class="col-md-8 text-start">
+        <!-- 60% Colonna Testo -->
+        <div class="col-lg-7 text-start">
           <div class="pixel-tag mb-2">👾 PORTFOLIO_V2.6</div>
           <h1 class="title-main">Caterina<br>Iaropoli</h1>
           <div class="mb-3">
@@ -307,8 +309,9 @@
             Progetto e sviluppo interfacce web chiare, usabili e ottimizzate per i motori di ricerca. Realizzo siti WordPress, piattaforme editoriali digitali e landing page, curandone il design responsive, la struttura frontend ed il posizionamento SEO On-Page.
           </p>
         </div>
-        <div class="col-md-4 text-center text-md-end">
-          <img src="img/profilebw.png" alt="Caterina Iaropoli" class="profile-img" onerror="this.src='https://via.placeholder.com/190x190/142020/00c8a5?text=Caterina+Iaropoli'">
+        <!-- 40% Colonna Immagine -->
+        <div class="col-lg-5 text-center text-lg-end">
+          <img src="img/profilebw.png" alt="Caterina Iaropoli" class="profile-img" onerror="this.src='https://via.placeholder.com/320x320/142020/00c8a5?text=Caterina+Iaropoli'">
         </div>
       </div>
     </section>
@@ -339,6 +342,8 @@
       <div class="skills-grid">
         <div class="skill-card">SEO On-Page</div>
         <div class="skill-card">Technical SEO</div>
+        <div class="skill-card">Google Search Console</div>
+        <div class="skill-card">Google Analytics</div>
         <div class="skill-card">HTML5</div>
         <div class="skill-card">CSS3</div>
         <div class="skill-card">WordPress</div>
@@ -353,13 +358,10 @@
         <div class="skill-card">Banner HTML</div>
         <div class="skill-card">Salesforce</div>
         <div class="skill-card">Canva</div>
-        <div class="skill-card">Trello</div>
-        <div class="skill-card">Google Search Console</div>
-        <div class="skill-card">Google Analytics</div>
       </div>
     </section>
 
-    <!-- MAIN WORKS (CON IMMAGINI COMPLETE) -->
+    <!-- MAIN WORKS -->
     <section class="mb-5">
       <h2 class="section-title"><span class="pixel-tag">03.</span> Featured Projects</h2>
 
@@ -373,7 +375,7 @@
             <div class="label-detail"><b>Ruolo:</b> SEO Specialist & Tech Consultant</div>
           </div>
           <div class="col-sm-6">
-            <div class="label-detail"><b>Competenze:</b> Technical SEO, Audit, Keyword Analysis</div>
+            <div class="label-detail"><b>Competenze:</b> Technical SEO, Audit, Search Console, Analytics</div>
           </div>
         </div>
       </div>
@@ -469,7 +471,7 @@
       </div>
     </section>
 
-    <!-- ADDITIONAL TEXT-ONLY PROJECTS (PROGETTI TESTUALI REINTEGRATI) -->
+    <!-- ADDITIONAL TEXT-ONLY PROJECTS -->
     <section class="mb-5">
       <h2 class="section-title"><span class="pixel-tag">04.</span> Additional Projects & Campaigns</h2>
       <div class="row g-4">
@@ -517,11 +519,11 @@
         <ul class="contacts-list">
           <li>
             <div class="icon-box">✉</div>
-            <a href="mailto:caterina.iaropoli@gmail.com">caterina.iaropoli@gmail.com</a>
+            <a href="mailto:cate.iaropoli@gmail.com">cate.iaropoli@gmail.com</a>
           </li>
           <li>
             <div class="icon-box">📞</div>
-            <a href="tel:+393318944520">+39 331 894 4520</a>
+            <a href="tel:+393920871966">+39 392 087 1966</a>
           </li>
           <li>
             <div class="icon-box">🔗</div>
