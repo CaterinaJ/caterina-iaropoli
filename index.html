@@ -1,299 +1,538 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="marquee.js" defer></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-    
-    <title>Portfolio - Caterina Iaropoli</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Caterina Iaropoli</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #001f1e;
+      --teal-primary: #00a896;
+      --teal-light: #02c39a;
+      --teal-glow: rgba(2, 195, 154, 0.25);
+      --glass-bg: rgba(255, 255, 255, 0.06);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --text-main: #f0fdfa;
+      --text-muted: #b2dfdb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(0, 168, 150, 0.4) 0%, rgba(0, 31, 30, 0.95) 50%, transparent 70%),
+        radial-gradient(circle at 85% 35%, rgba(2, 195, 154, 0.3) 0%, rgba(0, 40, 38, 0.85) 45%, transparent 65%),
+        radial-gradient(circle at 20% 75%, rgba(5, 102, 118, 0.4) 0%, rgba(0, 20, 20, 0.95) 50%, transparent 70%);
+      background-attachment: fixed;
+      line-height: 1.6;
+      padding: 40px 0;
+    }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .title-main {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.05;
+      background: linear-gradient(135deg, #ffffff 0%, var(--text-muted) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal-light), transparent);
+      border-radius: 2px;
+    }
+
+    /* BADGES & PILLS */
+    .pill-btn {
+      display: inline-block;
+      background: #ffffff;
+      color: #004d40;
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      margin-bottom: 10px;
+      margin-right: 6px;
+    }
+
+    .pill-btn:hover {
+      background: #e0f2f1;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--teal-glow);
+    }
+
+    .badge-card {
+      background: linear-gradient(135deg, rgba(0, 168, 150, 0.25) 0%, rgba(2, 195, 154, 0.1) 100%);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 25px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border: 1px solid rgba(2, 195, 154, 0.4);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    /* HERO SECTION */
+    .hero-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 60px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .profile-img {
+      max-width: 220px;
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      border: 2px solid var(--teal-light);
+      box-shadow: 0 10px 25px rgba(0, 168, 150, 0.3);
+    }
+
+    .intro-text {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* CARDS COMMON */
+    .custom-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 30px;
+      border: 1px solid var(--glass-border);
+    }
+
+    /* SKILLS GRID */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+    }
+
+    .skill-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(8px);
+      padding: 14px 10px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid var(--glass-border);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60px;
+    }
+
+    .skill-card:hover {
+      background: rgba(2, 195, 154, 0.2);
+      border-color: var(--teal-light);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px var(--teal-glow);
+    }
+
+    /* WORKS SECTION */
+    .work-item {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      padding: 35px;
+      border: 1px solid var(--glass-border);
+      margin-bottom: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .work-item:hover {
+      border-color: rgba(2, 195, 154, 0.4);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+
+    .work-item h3 {
+      font-size: 1.4rem;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .work-item .description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .preview-img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .label-detail {
+      background: rgba(2, 195, 154, 0.1);
+      border: 1px solid rgba(2, 195, 154, 0.25);
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .label-detail b {
+      color: #ffffff;
+    }
+
+    /* CONTACTS */
+    .contacts-card {
+      background: linear-gradient(135deg, rgba(0, 168, 150, 0.2) 0%, rgba(0, 31, 30, 0.8) 100%);
+      backdrop-filter: blur(16px);
+      border-radius: 20px;
+      padding: 35px;
+      border: 1px solid rgba(2, 195, 154, 0.3);
+    }
+
+    .contacts-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contacts-list li {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1rem;
+    }
+
+    .contacts-list a {
+      color: var(--text-main);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contacts-list a:hover {
+      color: var(--teal-light);
+      text-decoration: underline;
+    }
+
+    .icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(2, 195, 154, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .title-main {
+        font-size: 2.4rem;
+      }
+      .hero-card {
+        padding: 25px;
+      }
+      .work-item {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container-fluid page">
-        <div class="container hero">
-            <div class="row intro">
-                <div class="col-md-6 d-flex justify-content-end flex-column text-start">
-                    <h1 class="dm-sans-regular title">
-                        Caterina<br>
-                        Iaropoli
-                    </h1>
-                    <span class="text-color label d-inline-block dm-sans-regular">
-                        frontend dev
-                    </span><br>
-                    <span class="text-color label d-inline-block dm-sans-regular">
-                        web designer
-                    </span>
-                </div>
-                <div class="col-md-6 d-flex align-items-center text-end justify-content-end">
-                    <img src="img/profilebw.png">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <p class="dm-sans-regular">
-                        Progetto e sviluppo interfacce web chiare, usabili e orientate all’utente. Lavoro su siti WordPress, progetti editoriali digitali e landing page, seguendo i progetti dalla struttura alla messa online.
-                    </p>
-                </div>
-            </div>
+
+  <div class="container my-4">
+
+    <!-- HERO SECTION -->
+    <section class="hero-card">
+      <div class="row align-items-center mb-4">
+        <div class="col-md-7 text-start mb-4 mb-md-0">
+          <h1 class="title-main">
+            Caterina<br>Iaropoli
+          </h1>
+          <div class="mb-3">
+            <span class="pill-btn">frontend dev</span>
+            <span class="pill-btn">web designer</span>
+            <span class="pill-btn">seo specialist</span>
+          </div>
         </div>
-
-        <!-- about me -->
-       
-        <div class="over-none">
-            <div class="container">
-                <h2 class="title dm-sans-regular">
-                    about me
-                </h2>
-                <div class="row">
-                    <div class="col-sm-9">
-                        <div class="bg-custom">
-                            <p class="text-color">
-                                Lavoro nel mondo del web dal 2020 occupandomi di sviluppo frontend e realizzazione di siti WordPress. Nel tempo ho lavorato su progetti molto diversi tra loro: landing page marketing, siti corporate e magazine digitali, occupandomi sia della struttura che dell’implementazione tecnica. Mi piace lavorare su progetti ordinati, chiari e pensati per le persone che li devono usare.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 p-0">
-                        <div class="to-right p-0 opacity-none">
-                            <span class="enhance dm-sans-black">
-                                UX | UI<br>
-                                <span class="small">ORIENTED</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-5 text-center text-md-end">
+          <img src="img/profilebw.png" alt="Caterina Iaropoli" class="profile-img" onerror="this.src='https://via.placeholder.com/220x220/003333/00a896?text=Caterina+Iaropoli'">
         </div>
-
-        <!-- skills -->
-
-        <div class="container-fluid skills p-0">
-            <div class="container p-0">
-                <div class="row p-0">
-                    <div class="col">
-                        <h2 class="title">skills</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="Marquee-box">
-                <div class="MyMarquee left" id="marquee-left">
-                    <div class="marquee-content">
-                        <div class="card">HTML5</div>
-                        <div class="card">CSS3</div>
-                        <div class="card">WP</div>
-                        <div class="card">FIGMA</div>
-                        <div class="card">GSAP</div>
-                        <div class="card">MAGNEWS</div>
-                        <div class="card">GOOGLE<br>WEB<br>DESIGNER</div>
-                        <div class="card">CANVA</div>
-                    </div>
-                </div>
-                <div class="MyMarquee right" id="marquee-right">
-                    <div class="marquee-content">
-                        <div class="card">DEM HTML</div>
-                        <div class="card">BANNER<br>HTML</div>
-                        <div class="card">SALESFORCE</div>
-                        <div class="card">ELEMENTOR</div>
-                        <div class="card">CONNECTED<br>STORIES</div>
-                        <div class="card">TRELLO</div>
-                        <div class="card">CREATOPY</div>
-                        <div class="card">BOOTSTRAP</div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <p class="intro-text m-0">
+            Progetto e sviluppo interfacce web chiare, usabili e ottimizzate per i motori di ricerca. Realizzo siti WordPress, piattaforme editoriali digitali e landing page, curandone il design, le prestazioni frontend e la visibilità SEO On-Page.
+          </p>
         </div>
+      </div>
+    </section>
 
-        <!-- works -->
-        
-        <div class="over-none">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <h2 class="title">works</h2>
-                    </div>
-                </div>
-
-                <!-- #1 -->
-                <div class="work">
-                    <div class="row">
-                        <div class="col">
-                            <div class="worktitle">
-                                <div class="bg-opaco">
-                                    <h3>IABTV — Piattaforma video editoriale</h3>
-                                </div>
-                            </div>
-                            <p class="description">Piattaforma video per raccogliere e organizzare i contenuti degli eventi IAB (talk, conferenze, panel), strutturata come una vera e propria web TV.</p>
-                            <div class="preview">
-                                <img src="img/iabtv.png">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row detail">
-                        <div class="col-sm-6">
-                            <div class="to-left label-detail">
-                                <span class="dm-sans-regular">
-                                    <b>Ruolo</b><br>
-                                    Frontend & WordPress Developer
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="to-right label-detail">
-                                <span class="dm-sans-regular">
-                                    <b>Tecnologie</b><br>
-                                    WordPress, HTML, CSS, JavaScript
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- #2 -->
-                <div class="work">
-                    <div class="row">
-                        <div class="col">
-                            <div class="worktitle">
-                                <div class="bg-opaco">
-                                    <h3>BCC Mediocrati — Magazine digitale</h3>
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
-                    </div>
-                    <div class="row detail justify-items-center align-items-center">
-                        <div class="col-sm-6">
-                            <div class="preview">
-                                <img src="img/bcc.png" class="full">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="description">Trasformazione del magazine cartaceo della BCC Mediocrati in una piattaforma digitale completa, pensata per ospitare, organizzare e valorizzare i contenuti editoriali online.</p>
-                            <div class="to-right label-detail margin-bottom">
-                                <span class="dm-sans-regular">
-                                    <b>Ruolo</b><br>
-                                    Web Designer / Frontend &<br>WordPress Developer
-                                </span>
-                            </div>
-                            <div class="to-right label-detail">
-                                <span class="dm-sans-regular">
-                                    <b>Tecnologie</b><br>
-                                    WordPress, HTML, CSS, JavaScript
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- #3 -->
-                <div class="work">
-                    <div class="row">
-                        <div class="col">
-                            <div class="worktitle">
-                                <div class="bg-opaco">
-                                    <h3>3. Retailor.media — Sito corporate</h3>
-                                </div>
-                            </div>
-                            <p class="description">Sito corporate per Retailor Media, sviluppato from scratch per presentare l’azienda, i servizi e il posizionamento nel settore retail media e advertising data-driven.</p>
-                            <div class="preview">
-                                <img src="img/retailormedia-min.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row detail">
-                        <div class="col-sm-6">
-                            <div class="to-left label-detail">
-                                <span class="dm-sans-regular">
-                                    <b>Ruolo</b><br>
-                                    Frontend & WordPress Developer
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="to-right label-detail">
-                                <span class="dm-sans-regular">
-                                    <b>Tecnologie</b><br>
-                                    WordPress, HTML, CSS, JavaScript
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- #4 -->
-                <div class="work">
-                    <div class="row">
-                        <div class="col">
-                            <div class="worktitle">
-                                <div class="bg-opaco">
-                                    <h3>Molino Vigevano — Landing campaign antispreco</h3>
-                                </div>
-                            </div>
-                            <p class="description">Landing page sviluppata from scratch per una campagna di sensibilizzazione contro lo spreco alimentare.</p>
-                            <div class="preview">
-                                <img src="img/molinovigevano-min.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row detail">
-                        <div class="col-sm-6">
-                            <div class="to-left label-detail">
-                                <span class="dm-sans-regular">
-                                    <b>Ruolo</b><br>
-                                    Frontend Developer
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="to-right label-detail">
-                                <span class="dm-sans-regular">
-                                    <b>Tecnologie</b><br>
-                                    HTML, CSS, JavaScript
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- #5 -->
-                <div class="work">
-                    <div class="row">
-                        <div class="col">
-                            <div class="worktitle">
-                                <div class="bg-opaco">
-                                    <h3>My Vintage — Catalogo & location eventi</h3>
-                                </div>
-                            </div>
-                            <p class="description">Sviluppo e successivo restyling del sito web per My Vintage, una piattaforma dedicata al noleggio di Vespe e moto d’epoca, oltre alla promozione di uno spazio eventi unico a Milano. Il sito combina un catalogo di mezzi vintage consultabile e categorizzato con sezioni dedicate alla location e ai servizi offerti.</p>
-                            <div class="preview">
-                                <img src="img/my-vintage-min.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row detail">
-                        <div class="col-sm-6">
-                            <div class="to-left label-detail">
-                                <span class="dm-sans-regular">
-                                    <b>Ruolo</b><br>
-                                    Wordpress & Frontend Developer
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="to-right label-detail">
-                                <span class="dm-sans-regular">
-                                    <b>Tecnologie</b><br>
-                                    Wordpress, HTML, CSS, JavaScript
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>   
+    <!-- ABOUT ME -->
+    <section class="mb-5">
+      <h2 class="section-title">about me</h2>
+      <div class="row g-4">
+        <div class="col-md-9">
+          <div class="custom-card h-100 d-flex align-items-center">
+            <p class="m-0" style="color: var(--text-muted); font-size: 1rem;">
+              Sviluppatrice Frontend, Web Designer e SEO Specialist con anni di esperienza nel settore. Realizzo siti web performanti su WordPress e codice custom, unendo la cura per la User Experience (UX/UI) a solide ottimizzazioni SEO On-Page e tecniche. Mi occupo dell'intero ciclo di vita del sito: dall'architettura delle informazioni allo sviluppo responsive, fino al posizionamento organico sui motori di ricerca.
+            </p>
+          </div>
         </div>
-    </div>
+        <div class="col-md-3">
+          <div class="badge-card">
+            <span>SEO & UX<br><small style="font-weight: 300; font-size: 0.85rem; letter-spacing: 1px;">ORIENTED</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="mb-5">
+      <h2 class="section-title">skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">SEO ON-PAGE</div>
+        <div class="skill-card">TECHNICAL SEO</div>
+        <div class="skill-card">HTML5</div>
+        <div class="skill-card">CSS3</div>
+        <div class="skill-card">WORDPRESS</div>
+        <div class="skill-card">FIGMA</div>
+        <div class="skill-card">ELEMENTOR</div>
+        <div class="skill-card">WPAKER / DIVI</div>
+        <div class="skill-card">GSAP</div>
+        <div class="skill-card">BOOTSTRAP</div>
+        <div class="skill-card">MAGNEWS</div>
+        <div class="skill-card">DEM HTML</div>
+        <div class="skill-card">BANNER HTML</div>
+        <div class="skill-card">SALESFORCE</div>
+        <div class="skill-card">CANVA</div>
+        <div class="skill-card">TRELLO</div>
+      </div>
+    </section>
+
+    <!-- WORKS -->
+    <section class="mb-5">
+      <h2 class="section-title">works</h2>
+
+      <!-- #1: SEO Optimization & Audit -->
+      <div class="work-item">
+        <span class="pill-btn">1. SEO & Performance</span>
+        <h3>Ottimizzazione SEO On-Page & Technical Audit</h3>
+        <p class="description">Progetto di audit tecnico, analisi delle keyword (comprese long-tail keyword per l'intercettazione di traffico qualificato) e ottimizzazione SEO On-Page su siti web e piattaforme WordPress. Intervento strutturale sui meta-tag, dati strutturati, velocità di caricamento e architettura dei contenuti per migliorarne l'indicizzazione ed il posizionamento sui motori di ricerca.</p>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail">
+              <b>Ruolo</b><br>
+              SEO Specialist & Technical Web Consultant
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail">
+              <b>Competenze e Tool</b><br>
+              SEO Audit, Keyword Research, Technical SEO, WordPress SEO
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #2: IABTV -->
+      <div class="work-item">
+        <span class="pill-btn">2. IABTV</span>
+        <h3>Piattaforma video editoriale</h3>
+        <p class="description">Piattaforma video per raccogliere e organizzare i contenuti degli eventi IAB (talk, conferenze, panel), strutturata come una vera e propria web TV.</p>
+        <div class="mb-4">
+          <img src="img/iabtv.png" alt="IABTV Preview" class="preview-img" onerror="this.src='https://via.placeholder.com/900x400/003333/00a896?text=IABTV+Preview'">
+        </div>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail">
+              <b>Ruolo</b><br>
+              Frontend & WordPress Developer
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail">
+              <b>Tecnologie</b><br>
+              WordPress, HTML, CSS, JavaScript
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #3: BCC Mediocrati -->
+      <div class="work-item">
+        <span class="pill-btn">3. BCC Mediocrati</span>
+        <h3>Magazine digitale</h3>
+        <div class="row align-items-center g-4 my-2">
+          <div class="col-md-6">
+            <img src="img/bcc.png" alt="BCC Mediocrati Preview" class="preview-img" onerror="this.src='https://via.placeholder.com/500x300/003333/00a896?text=BCC+Mediocrati'">
+          </div>
+          <div class="col-md-6">
+            <p class="description">Trasformazione del magazine cartaceo della BCC Mediocrati in una piattaforma digitale completa, pensata per ospitare, organizzare e valorizzare i contenuti editoriali online.</p>
+            <div class="label-detail mb-3">
+              <b>Ruolo</b><br>
+              Web Designer / Frontend & WordPress Developer
+            </div>
+            <div class="label-detail">
+              <b>Tecnologie</b><br>
+              WordPress, HTML, CSS, JavaScript
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #4: Retailor.media -->
+      <div class="work-item">
+        <span class="pill-btn">4. Retailor.media</span>
+        <h3>Sito corporate</h3>
+        <p class="description">Sito corporate per Retailor Media, sviluppato from scratch per presentare l’azienda, i servizi e il posizionamento nel settore retail media e advertising data-driven.</p>
+        <div class="mb-4">
+          <img src="img/retailormedia-min.png" alt="Retailor Media Preview" class="preview-img" onerror="this.src='https://via.placeholder.com/900x400/003333/00a896?text=Retailor+Media+Preview'">
+        </div>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail">
+              <b>Ruolo</b><br>
+              Frontend & WordPress Developer
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail">
+              <b>Tecnologie</b><br>
+              WordPress, HTML, CSS, JavaScript
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #5: Molino Vigevano -->
+      <div class="work-item">
+        <span class="pill-btn">5. Molino Vigevano</span>
+        <h3>Landing campaign antispreco</h3>
+        <p class="description">Landing page sviluppata from scratch per una campagna di sensibilizzazione contro lo spreco alimentare.</p>
+        <div class="mb-4">
+          <img src="img/molinovigevano-min.png" alt="Molino Vigevano Preview" class="preview-img" onerror="this.src='https://via.placeholder.com/900x400/003333/00a896?text=Molino+Vigevano+Preview'">
+        </div>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail">
+              <b>Ruolo</b><br>
+              Frontend Developer
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail">
+              <b>Tecnologie</b><br>
+              HTML, CSS, JavaScript
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #6: My Vintage -->
+      <div class="work-item">
+        <span class="pill-btn">6. My Vintage</span>
+        <h3>Catalogo & location eventi</h3>
+        <p class="description">Sviluppo e successivo restyling del sito web per My Vintage, una piattaforma dedicata al noleggio di Vespe e moto d’epoca, oltre alla promozione di uno spazio eventi unico a Milano. Il sito combina un catalogo di mezzi vintage consultabile e categorizzato con sezioni dedicate alla location e ai servizi offerti.</p>
+        <div class="mb-4">
+          <img src="img/my-vintage-min.png" alt="My Vintage Preview" class="preview-img" onerror="this.src='https://via.placeholder.com/900x400/003333/00a896?text=My+Vintage+Preview'">
+        </div>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="label-detail">
+              <b>Ruolo</b><br>
+              WordPress & Frontend Developer
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="label-detail">
+              <b>Tecnologie</b><br>
+              WordPress, HTML, CSS, JavaScript
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- CONTACTS -->
+    <section class="mb-5">
+      <h2 class="section-title">contacts</h2>
+      <div class="contacts-card">
+        <ul class="contacts-list">
+          <li>
+            <div class="icon-box">✉️</div>
+            <a href="mailto:caterina.iaropoli@gmail.com">caterina.iaropoli@gmail.com</a>
+          </li>
+          <li>
+            <div class="icon-box">📞</div>
+            <a href="tel:+393318944520">+39 331 894 4520</a>
+          </li>
+          <li>
+            <div class="icon-box">🔗</div>
+            <a href="https://www.linkedin.com/in/caterina-iaropoli/" target="_blank" rel="noopener noreferrer">
+              linkedin.com/in/caterina-iaropoli
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
