@@ -30,17 +30,73 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px; /* Offset per la navbar sticky */
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       color: var(--text-main);
       background-color: var(--bg-dark);
+      /* Sfondo con quadratini più fitti (16px x 16px) */
       background-image: 
         radial-gradient(circle at 50% 0%, rgba(0, 200, 165, 0.12) 0%, transparent 50%),
         linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 100% 100%, 32px 32px, 32px 32px;
+      background-size: 100% 100%, 16px 16px, 16px 16px;
       line-height: 1.6;
-      padding: 50px 0;
+      padding-top: 100px;
+      padding-bottom: 50px;
+    }
+
+    /* NAVBAR STICKY */
+    .custom-navbar {
+      background: rgba(13, 20, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link:focus {
+      color: var(--teal-accent);
+    }
+
+    /* LANG SWITCHER */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .lang-switcher a {
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .lang-switcher a.active {
+      color: var(--teal-accent);
+    }
+
+    .lang-switcher a:hover {
+      color: #ffffff;
+    }
+
+    .lang-separator {
+      color: var(--border-subtle);
     }
 
     /* TYPOGRAPHY */
@@ -105,14 +161,15 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
-    /* IMMAGINE PROFILO (PROPORZIONE 40% HERO) */
+    /* IMMAGINE PROFILO - COLOR-DODGE SENZA OMBRA */
     .profile-img {
       max-width: 320px;
       width: 100%;
       height: auto;
       border-radius: 12px;
       border: none;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      box-shadow: none;
+      mix-blend-mode: color-dodge;
     }
 
     /* SKILLS GRID */
@@ -291,9 +348,46 @@
 </head>
 <body>
 
+  <!-- NAVBAR STICKY -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+    <div class="container">
+      <a class="navbar-brand pixel-tag" href="#">👾 CATERINA.DEV</a>
+      
+      <div class="d-flex align-items-center gap-3 order-lg-3">
+        <!-- Switch Lingua Sempre Visibile anche su Mobile -->
+        <div class="lang-switcher">
+          <a href="#" class="active">ITA</a>
+          <span class="lang-separator">|</span>
+          <a href="index-en.html">ENG</a>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse justify-content-end order-lg-2" id="navbarNav">
+        <ul class="navbar-nav gap-lg-3 my-2 my-lg-0 text-center">
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Progetti</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contacts">Contatti</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <div class="container my-4">
 
-    <!-- HERO SECTION (RAPPORTO 60/40 SU DESKTOP) -->
+    <!-- HERO SECTION (60/40 DESKTOP) -->
     <section class="custom-card">
       <div class="row align-items-center g-4">
         <!-- 60% Colonna Testo -->
@@ -311,13 +405,13 @@
         </div>
         <!-- 40% Colonna Immagine -->
         <div class="col-lg-5 text-center text-lg-end">
-          <img src="img/img-profilo.png" alt="Caterina Iaropoli" class="profile-img" onerror="this.src='https://via.placeholder.com/320x320/142020/00c8a5?text=Caterina+Iaropoli'">
+          <img src="img/profilebw.png" alt="Caterina Iaropoli" class="profile-img" onerror="this.src='https://via.placeholder.com/320x320/142020/00c8a5?text=Caterina+Iaropoli'">
         </div>
       </div>
     </section>
 
     <!-- ABOUT ME -->
-    <section class="mb-5">
+    <section id="about" class="mb-5">
       <h2 class="section-title"><span class="pixel-tag">01.</span> About Me</h2>
       <div class="row g-4">
         <div class="col-md-9">
@@ -337,7 +431,7 @@
     </section>
 
     <!-- SKILLS -->
-    <section class="mb-5">
+    <section id="skills" class="mb-5">
       <h2 class="section-title"><span class="pixel-tag">02.</span> Technical Skills</h2>
       <div class="skills-grid">
         <div class="skill-card">SEO On-Page</div>
@@ -362,7 +456,7 @@
     </section>
 
     <!-- MAIN WORKS -->
-    <section class="mb-5">
+    <section id="projects" class="mb-5">
       <h2 class="section-title"><span class="pixel-tag">03.</span> Featured Projects</h2>
 
       <!-- #1: SEO Optimization -->
@@ -513,7 +607,7 @@
     </section>
 
     <!-- CONTACTS -->
-    <section class="mb-5">
+    <section id="contacts" class="mb-5">
       <h2 class="section-title"><span class="pixel-tag">05.</span> Get In Touch</h2>
       <div class="contacts-card">
         <ul class="contacts-list">
